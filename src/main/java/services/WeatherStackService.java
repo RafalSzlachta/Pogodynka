@@ -6,6 +6,7 @@ import entity.City;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import responseModels.currentWeatherStackModel.Current;
 import responseModels.currentWeatherStackModel.CurrentWeatherStack;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ import java.io.IOException;
 public class WeatherStackService {
 
     //metoda pobierająca aktualną temperaturę w danym mieście
-    public double getCurrentWeatherStackTemperature(City city) throws JsonProcessingException {
+    public Current getCurrentWeatherStackConditions(City city) throws JsonProcessingException {
 
         //klucz do API
         String wsApiKey = "c6c41f31513a19b82b4a2a5124bc2fad";
@@ -40,6 +41,6 @@ public class WeatherStackService {
         ObjectMapper objectMapper = new ObjectMapper();
         CurrentWeatherStack cws = objectMapper.readValue(responseBodyString, CurrentWeatherStack.class);
 
-        return cws.getCurrent().getTemperature();
+        return cws.getCurrent();
     }
 }

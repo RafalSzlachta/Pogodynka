@@ -13,8 +13,10 @@ public class Main {
         City city = City.builder().name(miasto).build();
 
         WeatherStackService wss = new WeatherStackService();
-        System.out.println("Aktualna temperatura w mieście " + city.getName() + " wynosi: " + wss.getCurrentWeatherStackTemperature(city) +
-                " stopni Celcjusza");
+        System.out.println("Aktualne warunki pogodowe w mieście " + city.getName() + ":");
+        System.out.println("temperatura: " + wss.getCurrentWeatherStackConditions(city).getTemperature());
+        System.out.println("ciśnienie: " + wss.getCurrentWeatherStackConditions(city).getPressure());
+        System.out.println("wilgotność: " + wss.getCurrentWeatherStackConditions(city).getHumidity());
 
 
 
