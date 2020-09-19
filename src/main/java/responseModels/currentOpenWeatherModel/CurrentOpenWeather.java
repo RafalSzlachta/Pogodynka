@@ -12,5 +12,5 @@ public class CurrentOpenWeather {
     @Getter
     @Setter
     @JsonProperty("main")
-    Main owmain;
+    Conditions owconditions;
 }

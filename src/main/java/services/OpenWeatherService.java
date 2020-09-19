@@ -7,12 +7,12 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import responseModels.currentOpenWeatherModel.CurrentOpenWeather;
-import responseModels.currentOpenWeatherModel.Main;
+import responseModels.currentOpenWeatherModel.Conditions;
 
 import java.io.IOException;
 
 public class OpenWeatherService {
-    public Main getCurrentOpenWeatherTemperature(City city) throws JsonProcessingException {
+    public Conditions getCurrentOpenWeatherTemperature(City city) throws JsonProcessingException {
 
         String owApiKey = "605f3728c013ce474c7267bc817c0300";
         Request request = new Request.Builder()
@@ -31,7 +31,7 @@ public class OpenWeatherService {
         }
         ObjectMapper objectMapper = new ObjectMapper();
         CurrentOpenWeather cow = objectMapper.readValue(responseBodyString, CurrentOpenWeather.class);
-        return cow.getOwmain();
+        return cow.getOwconditions();
     }
 
 }

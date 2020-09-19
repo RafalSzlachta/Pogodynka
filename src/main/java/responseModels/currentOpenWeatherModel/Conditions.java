@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Main {
+public class Conditions {
 
     @JsonProperty("temp")
     private int temp;
@@ -14,5 +14,10 @@ public class Main {
     private int pressure;
     @JsonProperty("humidity")
     private int humidity;
+
+    public int tempConverter(int temp){
+        temp= temp-273;
+        return temp;
+    }
 
 }
