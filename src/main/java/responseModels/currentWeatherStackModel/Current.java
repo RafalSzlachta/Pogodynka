@@ -9,13 +9,7 @@ import lombok.Data;
 public class Current {
 
     @JsonProperty("temperature")
-    private double temperature;
-
-    @JsonProperty("wind_speed")
-    private int windSpeed;
-
-    @JsonProperty("wind_dir")
-    private String windDirection;
+    private int temperature;
 
     @JsonProperty("pressure")
     private int pressure;

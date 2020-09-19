@@ -15,13 +15,18 @@ public class Main {
         
         OpenWeatherService ows = new OpenWeatherService();
 
-        System.out.println("Aktualne warunki pogodowe w mieście " + city.getName() + ":");
+
+        System.out.println("Aktualne warunki pogodowe OpenWeather w mieście " + city.getName() + ":");
         System.out.println("temperatura: " + (ows.getCurrentOpenWeatherTemperature(city).getTemp()-273));
         System.out.println("ciśnienie: " + ows.getCurrentOpenWeatherTemperature(city).getPressure());
         System.out.println("wilgotność: " + ows.getCurrentOpenWeatherTemperature(city).getHumidity());
 
-
-
+        WeatherStackService wss = new WeatherStackService();
+        System.out.println("Aktualne warunki pogodowe WeatherStack w mieście " + city.getName() + ":");
+        System.out.println("temperatura: " + wss.getCurrentWeatherStackConditions(city).getTemperature());
+        System.out.println("ciśnienie: " + wss.getCurrentWeatherStackConditions(city).getPressure());
+        System.out.println("wilgotność: " + wss.getCurrentWeatherStackConditions(city).getHumidity());
+        
 
     }
 }
