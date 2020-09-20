@@ -4,16 +4,29 @@ import responseModels.currentOpenWeatherModel.Conditions;
 import services.OpenWeatherService;
 import services.WeatherStackService;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws JsonProcessingException {
 
+
+      /*  try {
+            ResultSet result=QueryExecutor.executeSelect("SELECT * FROM public");
+            result.next();
+            String userName = result.getString("city");
+            System.out.println("Znaleziono" + userName);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } */
+
         Scanner sc = new Scanner(System.in);
         System.out.print("Wpisz miasto, w którym chcesz sprawdzić aktualną pogodę: ");
         String miasto = sc.nextLine();
         City city = City.builder().name(miasto).build();
-        
+
+
         OpenWeatherService ows = new OpenWeatherService();
 
 
@@ -31,7 +44,8 @@ public class Main {
         WeatherStackService wss = new WeatherStackService();
         Conditions conditions = new Conditions();
         System.out.println("Aktualne warunki pogodowe w mieście " + city.getName() + ":");
-        
+
+
         System.out.println("temperatura: " + (conditions.tempConverter((ows.getCurrentOpenWeatherTemperature(city).getTemp()))+
                 wss.getCurrentWeatherStackConditions(city).getTemperature())/2);
 
